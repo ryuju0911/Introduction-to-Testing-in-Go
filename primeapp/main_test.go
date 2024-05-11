@@ -107,6 +107,7 @@ func Test_checkNumbers(t *testing.T) {
 		{name: "typed", input: "three", expected: "Please enter a whole number!"},
 		{name: "decimal", input: "1.1", expected: "Please enter a whole number!"},
 		{name: "quit", input: "q", expected: ""},
+		{name: "QUIT", input: "Q", expected: ""},
 	}
 
 	for _, e := range tests {
