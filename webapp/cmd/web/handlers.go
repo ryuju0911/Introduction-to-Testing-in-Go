@@ -17,13 +17,15 @@ type TemplateData struct {
 	Data map[string]any
 }
 
-func (app *application) render(w http.ResponseWriter, _ *http.Request, t string, data *TemplateData) error {
+func (app *application) render(w http.ResponseWriter, r *http.Request, t string, data *TemplateData) error {
 	// parse the template from disk.
 	parsedTemplate, err := template.ParseFiles(path.Join(pathToTemplates, t))
 	if err != nil {
 		http.Error(w, "bad request", http.StatusBadRequest)
 		return err
 	}
+
+	data.IP = app.ipFromContext(r.Context())
 
 	// execute the template, passing it data, if any.
 	err = parsedTemplate.Execute(w, data)
