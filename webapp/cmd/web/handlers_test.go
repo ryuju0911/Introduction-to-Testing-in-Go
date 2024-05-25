@@ -189,9 +189,13 @@ func Test_app_Login(t *testing.T) {
 			t.Errorf("%s: returned wrong status code; expected %d, but got %d", e.name, e.expectedStatusCode, rr.Code)
 		}
 
-		actualLoc, _ := rr.Result().Location()
-		if actualLoc.String() != e.expectedLoc {
-			t.Errorf("%s: expected location %s but got %s", e.name, e.expectedLoc, actualLoc.String())
+		actualLoc, err := rr.Result().Location()
+		if err == nil {
+			if actualLoc.String() != e.expectedLoc {
+				t.Errorf("%s: expected location %s but got %s", e.name, e.expectedLoc, actualLoc.String())
+			}
+		} else {
+			t.Errorf("%s: no location header set", e.name)
 		}
 	}
 }
