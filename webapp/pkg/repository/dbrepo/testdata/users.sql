@@ -52,13 +52,6 @@ ALTER TABLE public.users ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
-
-
---
 -- Name: user_images user_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
