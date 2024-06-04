@@ -68,7 +68,7 @@ func Test_app_authRequired(t *testing.T) {
 		}
 		rr := httptest.NewRecorder()
 
-		handlerToTest := app.authRequire(nextHandler)
+		handlerToTest := app.authRequired(nextHandler)
 		handlerToTest.ServeHTTP(rr, req)
 
 		if e.expectAuthorized && rr.Code == http.StatusUnauthorized {
