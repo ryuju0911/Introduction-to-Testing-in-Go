@@ -1,5 +1,3 @@
-//go:build integration
-
 package dbrepo
 
 import (
@@ -80,7 +78,7 @@ func TestMain(m *testing.M) {
 		log.Fatalf("could not connect to database: %s", err)
 	}
 
-	// populate the database with empty tablee.
+	// populate the database with empty tables.
 	err = createTables()
 	if err != nil {
 		log.Fatalf("error creating tables: %s", err)
